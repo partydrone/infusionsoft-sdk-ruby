@@ -1,0 +1,7 @@
+version: '3.8'
+
+services:
+  ruby:
+    build: .
+    volumes:
+      - .:/opt/ruby:cached
