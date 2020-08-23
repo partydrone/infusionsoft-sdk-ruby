@@ -1,11 +1,11 @@
 require "test_helper"
 
-class InfusionsoftTest < Minitest::Test
-  def test_that_it_has_a_version_number
+describe Infusionsoft do
+  it "has a version number" do
     refute_nil ::Infusionsoft::VERSION
   end
 
-  def test_it_does_something_useful
+  it "does something useful" do
     assert false
   end
 end
