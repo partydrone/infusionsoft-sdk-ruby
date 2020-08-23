@@ -4,4 +4,4 @@ services:
   ruby:
     build: .
     volumes:
-      - .:/opt/ruby:cached
+      - .:/opt/gem:cached
