@@ -1,13 +1,15 @@
 module Infusionsoft
   module Configurable
-    attr_accessor :access_token
-    attr_writer :base_url
+    attr_accessor :access_token, :client_id, :client_secret
+    attr_writer :login, :password, :rest_api_endpoint
 
     class << self
       def keys
         @keys ||= [
           :access_token,
-          :base_url
+          :login,
+          :password,
+          :rest_api_endpoint
         ]
       end
     end
@@ -28,8 +30,14 @@ module Infusionsoft
       opts.hash == options.hash
     end
 
-    def base_url
-      File.join(@base_url, "")
+    def rest_api_endpoint
+      File.join(@rest_api_endpoint, "")
+    end
+
+    def login
+      @login = begin
+        user.login
+      end
     end
 
     private

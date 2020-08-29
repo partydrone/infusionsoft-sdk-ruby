@@ -10,5 +10,10 @@ module Infusionsoft
         instance_variable_set(:"@#{key}", value)
       end
     end
+
+    def login=(value)
+      reset_agent
+      @login = value
+    end
   end
 end

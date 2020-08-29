@@ -10,7 +10,7 @@ describe Infusionsoft do
   end
 
   it "has a version number" do
-    _(::Infusionsoft::VERSION).wont_be_nil
+    _(Infusionsoft::VERSION).wont_be_nil
   end
 
   it "sets defaults" do
