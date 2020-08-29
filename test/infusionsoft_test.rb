@@ -15,7 +15,9 @@ describe Infusionsoft do
 
   it "sets defaults" do
     Infusionsoft::Configurable.keys.each do |key|
-      _(Infusionsoft.instance_variable_get(:"@#{key}")).must_equal Infusionsoft::Default.send(key)
+      unless Infusionsoft.instance_variable_get(:"@#{key}").nil?
+        _(Infusionsoft.instance_variable_get(:"@#{key}")).must_equal Infusionsoft::Default.send(key)
+      end
     end
   end
 

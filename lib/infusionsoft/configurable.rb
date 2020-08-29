@@ -1,15 +1,21 @@
 module Infusionsoft
   module Configurable
-    attr_accessor :access_token, :client_id, :client_secret
-    attr_writer :login, :password, :rest_api_endpoint
+    attr_accessor :access_token, :bearer_token, :client_id, :client_secret, :netrc, :netrc_file
+    attr_writer :login, :password, :rest_api_endpoint, :xmlrpc_api_endpoint
 
     class << self
       def keys
         @keys ||= [
           :access_token,
+          :bearer_token,
+          :client_id,
+          :client_secret,
           :login,
+          :netrc,
+          :netrc_file,
           :password,
-          :rest_api_endpoint
+          :rest_api_endpoint,
+          :xmlrpc_api_endpoint
         ]
       end
     end
@@ -34,10 +40,18 @@ module Infusionsoft
       File.join(@rest_api_endpoint, "")
     end
 
+    def xmlrpc_api_endpoint
+      File.join(@xmlrpc_api_endpoint, "")
+    end
+
     def login
-      @login = begin
-        user.login
-      end
+      @login # = begin
+      #   user.login
+      # end
+    end
+
+    def netrc?
+      !!@netrc
     end
 
     private
