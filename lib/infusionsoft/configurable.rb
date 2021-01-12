@@ -1,13 +1,21 @@
 module Infusionsoft
   module Configurable
-    attr_accessor :access_token
-    attr_writer :base_url
+    attr_accessor :access_token, :bearer_token, :client_id, :client_secret, :netrc, :netrc_file
+    attr_writer :login, :password, :rest_api_endpoint, :xmlrpc_api_endpoint
 
     class << self
       def keys
         @keys ||= [
           :access_token,
-          :base_url
+          :bearer_token,
+          :client_id,
+          :client_secret,
+          :login,
+          :netrc,
+          :netrc_file,
+          :password,
+          :rest_api_endpoint,
+          :xmlrpc_api_endpoint
         ]
       end
     end
@@ -28,8 +36,22 @@ module Infusionsoft
       opts.hash == options.hash
     end
 
-    def base_url
-      File.join(@base_url, "")
+    def rest_api_endpoint
+      File.join(@rest_api_endpoint, "")
+    end
+
+    def xmlrpc_api_endpoint
+      File.join(@xmlrpc_api_endpoint, "")
+    end
+
+    def login
+      @login # = begin
+      #   user.login
+      # end
+    end
+
+    def netrc?
+      !!@netrc
     end
 
     private
