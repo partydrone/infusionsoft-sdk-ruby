@@ -251,19 +251,5 @@ describe Infusionsoft::Client do
         _(@client).must_be :application_authenticated?
       end
     end
-
-    describe "when basic authenticated" do
-      it "makes authenticated calls" do
-        Infusionsoft.configure do |config|
-          config.login    = "pengwyn"
-          config.password = "il0veruby"
-        end
-
-        root_request = stub_request(:get, infusionsoft_url("/")).with(basic_auth: ["pengwyn", "il0veruby"])
-
-        Infusionsoft.client.get("/")
-        assert_requested root_request
-      end
-    end
   end
 end
